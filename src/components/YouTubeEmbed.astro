@@ -1,0 +1,23 @@
+---
+type Props = {
+  id: string
+}
+
+const { id } = Astro.props
+---
+
+<div>
+  <iframe
+    class="aspect-video w-full"
+    src={`https://www.youtube-nocookie.com/embed/${id}`}
+    frame-border="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+</div>
+
+<style>
+  .aspect-video {
+    aspect-ratio: 16/9;
+  }
+</style>

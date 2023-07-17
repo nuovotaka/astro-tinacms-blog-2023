@@ -1,0 +1,141 @@
+---
+draft: false
+publishDate: 2022-12-29T09:00:00+09:00
+title: 'Git の使い方'
+description: 'Git の使い方の備忘録'
+author: nuovotaka
+categories:
+  - computer
+tags:
+  - github
+  - git
+---
+
+## Git の使い方の備忘録
+
+下記動画が表示されていない場合は、何回かリロードを行ってください。
+
+### 通常の add, commit
+
+{% Youtube id="4SIkCQdUpVA" /%}
+
+ファイルなどを一時保管で記憶(ステージエリア)し、git 管理エリアでバージョン管理(commit)をします。
+
+### コミットの修正、取り消し(amend)
+
+{% Youtube id="uMVdw1dTd4g" /%}
+
+### コミットの取り消し(reset Hard)
+
+{% Youtube id="_fUC8PKG8E4" /%}
+
+### 別ブランチのコミットを拾ってきてマージ(cherry-pick)
+
+※ 動画内 chery-pick → cherry-pick の間違いです。
+
+{% Youtube id="lCwRrwsbB50" /%}
+
+異なるリポジトリのコミットを拾ってきてマージする方法
+
+コマンドラインから下記コマンドを叩く
+
+```bash
+（修正を導入したいリポジトリ内で）
+git remote add Hoge_REPO {すでに修正を導入したリポジトリのURL}
+git fetch Hoge_REPO
+git cherry-pick {Hoge_REPO上のコミットのSHA1}
+git push origin master
+
+git remote rm Hoge_REPO
+```
+
+### ブランチの改変(コミットの修正)(rebase)
+
+※　リモート上に同期してしまった場合はこちらのコマンドではなく `revert` を利用するのが良いだろう。他の人が混乱してしまわないように。
+
+SourceTree(GUI)で Rebase をする場合は、画面左から対象のブランチを選択し右クリック。「Rebase current branch onto xxx」を選択する。
+
+確認ダイアログが表示される。良い場合は、ok をクリック。
+
+### ログの更新方法
+
+- 直前のコミットを変更したい場合は？
+  amend オプションを利用する
+- 直前よりも前のコミットを変更したい場合は？
+  rebase のインタラクティブモードを利用する
+  `git rebase -i xxxxxx`
+  `-i` はインタラクティブモードで `rebase` を実行しますよという意味。
+  `xxxxxx` は現在の位置から `xxxxxx` までの範囲のコミットまでという意味。 `xxxxxx` はハッシュ値を指定すること。
+  コマンドを実行すると git log(新しいものから表示される)とは反対の画面表示となる(古いものから表示される。comitti 操作を行った順で上から表示されるということ。)
+  `pick` と記述されているのは、「このコミットは保留、変更はしない」という意味。
+  `pick` を `reword` に変更すると、「コミットメッセージを変更する」という意味になる。
+  ### GUI (SourceTree)でコミットメッセージを変更する場合は？
+  1. 変更したい範囲を指定
+  2. 指定したコミット上で右クリック
+  3. 「Rebase Children of SHA-1 interactivly…」を選択
+  4. 変更したいコミットメッセージが見つかったら右クリック
+  5. 「Edit message…」を選択
+  6. 内容を編集し、ok
+  7. Rebase でコミットを編集できる。
+- いくつかのコミットを一つにまとめたい場合は？
+  こちらも `-i` の `rebase` を利用して行うことができる。
+  インタラクティブモードを実行すると一覧が表示されるのでそこで `squash`(濃縮) コマンドを使う。
+  `squash` はこのコマンドを利用したその前のコミットとまとめることになる。
+  `squash` 後のコミットメッセージを変更することができる。
+  ### GUI でコミットをまとめるには？
+  1. コミットログ内で該当のコミット上で右クリック
+  2. 「Rebase Children of SHA-1 interactively…」
+  3. インタラクティブモードを起動
+  4. まとめるコミット上で右クリック
+  5. 「Squash with previous commit…」を選択
+  6. ok.戻る時は Cmd+Z(win: Ctrl+Z)で元の状態に戻せる。
+- 一つのコミットを分割したい場合は？
+  こちらもインタラクティブモードを利用する。
+  エディタが表示されたら今度は `edit` を `pick` の代わりにつける。
+  1. `git reset HEAD^` でコミットを取り消し
+  2. `git add *****` `git commit -m "コミットメッセージ"`
+  3. 分割されているファイルをそれぞれ `add & commit` を行う
+  4. `git rebase --continue` で終了。
+     コミットログを見ると分割されていることがわかる。
+  ### GUI でコミットを分割するには？
+  1. インタラクティブモードを起動
+  2. 分割したいコミット上にチェックを入れる。
+  3. 分割したいところで HEAD が止まるのだが GUI では操作ができないのでターミナルから後の操作は行うことになる。
+  4. `add & commit` の操作を行う
+  5. GUI 　の機能選択から「Action」→「Continue Rebase」を選択
+  6. 残りの Rebase 作業を行ってくれる( `git rebase --continue` と同様の操作)
+- コミット間に新しいコミットを挿入したい
+  こちらもインタラクティブモードで行うことができる。
+  ```bash
+  pick grea567 add init
+  pick jad7840 add test1
+  pick a2748bf add test2
+  pick bc895df add test4
+  pick da34bf7 add test5
+  ```
+  上記のような状態で test2 と test4 の間に新しいコミット `test3` を挿入したいときは、以下のようにする。 `git log` とは表示が逆なので注意。
+  そして挿入するところ(作業を中断するところに注意)
+  ```bash
+  pick grea567 add init
+  pick jad7840 add test1
+  edit a2748bf add test2.  # <- こちらの pick を　edit に変更
+  pick bc895df add test4
+  pick da34bf7 add test5
+  ```
+  変更したら `rebase` を実行しよう。
+  `add & commit` を行ってコミットを追加する。
+  最後に `git rebase --continue` を行う。
+  ### GUI で新しいコミットを挿入するには？
+  1. 分割する場合同様、挿入したいコミットにチェックをいれる
+  2. ターミナルから操作を行う。 `add & commit`
+  3. アクションメニューから「Action」→ 「Continue Rebase」選択
+  4. 残りの rebase 作業を実行してくれる。
+- コミットを削除または順序の調整をしたい場合は？
+  インタラクティブモードを起動しエディタ上で編集するだけで ok.
+  ### GUI で順序の調整は？
+  1. マウスでドラッグして順序を調整
+  2. ok ボタンを押下で終了
+     削除する場合は、コマンドラインの場合はエディタで `drop` もしくは直接削除しても ok
+  ### GUI で削除は？
+  1. Rebase 画面からコミット上で右クリック
+  2. 「Delete commit…」を選択

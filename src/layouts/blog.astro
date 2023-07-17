@@ -1,0 +1,37 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import type { Frontmatter } from '../config'
+import Base from '../layouts/base.astro'
+import BlogHero from '../components/bloghero.astro'
+import NextPrev from '../components/nextprev.astro'
+import Images from '../components/images.astro'
+
+export interface Props {
+  frontmatter: Frontmatter
+  prev?: CollectionEntry<'blog'>
+  next?: CollectionEntry<'blog'>
+}
+
+const { frontmatter, prev, next } = Astro.props
+---
+
+<Base frontmatter={frontmatter}>
+  <main class="dark:bg-black">
+    <article class="post">
+      <header>
+        <BlogHero frontmatter={frontmatter} />
+      </header>
+      <section
+        class="prose prose-orange mx-auto my-8 max-w-screen-lg px-4 dark:prose-invert lg:prose-xl lg:px-0">
+        {frontmatter.images && <Images images={frontmatter.images} />}
+        <slot />
+      </section>
+    </article>
+  </main>
+  <NextPrev
+    slot="before-footer"
+    base={import.meta.env.BASE_URL + 'blog/'}
+    prev={prev}
+    next={next}
+  />
+</Base>
