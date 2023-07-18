@@ -3,7 +3,7 @@
   "description": "Hello Astro is a full featured Astro corporate/marketing/blog starter theme written in Typescript and TailwindCSS. It supports Markdown and MDX based pages and blog posts.",
   "version": "1.0.1",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "tinacms dev -c 'astro dev'",
     "clean": "rm -rf node_modules .astro dist",
     "start": "astro dev",
     "build": "astro build",
@@ -55,6 +55,7 @@
   "dependencies": {
     "@astrojs/markdoc": "^0.3.3",
     "@astrojs/rss": "^2.4.3",
+    "@tinacms/cli": "^1.5.25",
     "astro-icon": "^0.8.1",
     "astro-seo": "^0.7.4",
     "hero-patterns": "^2.1.0",
@@ -63,7 +64,8 @@
     "lunr": "^2.3.9",
     "photoswipe": "^5.3.7",
     "photoswipe-dynamic-caption-plugin": "^1.2.7",
-    "swiper": "^9.4.1"
+    "swiper": "^9.4.1",
+    "tinacms": "^1.5.16"
   },
   "packageManager": "pnpm@8.5.1"
 }
