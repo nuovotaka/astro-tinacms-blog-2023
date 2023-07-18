@@ -21,7 +21,7 @@ export default defineConfig({
       noExternal: ['swiper', 'leaflet']
     }
   },
-  site: 'https://blog.nuovotaka.com/',
+  site: 'https://devblog.nuovotaka.com/',
   base: '/',
   integrations: [tailwind(), sitemap(), mdx(), alpinejs(), robotsTxt(), markdoc()],
   experimental: {
