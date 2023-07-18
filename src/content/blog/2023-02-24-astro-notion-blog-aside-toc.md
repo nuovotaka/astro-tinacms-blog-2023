@@ -151,8 +151,6 @@ if (istoc.length === 0) {
 
 ### querySelectorAll(”a[id]”)
 
-![2023-02-25 8.30.46.png](images/2023-02-25_8.30.46.png)
-
 a tag に id が付与されていてサイドバーでクラスに’.active’を追加したいときに id が必要になります。
 
 上記の画像では h6 に id が無く’null’ となってしまうため、a[id] で抽出することとしました。
