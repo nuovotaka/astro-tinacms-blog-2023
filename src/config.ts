@@ -41,7 +41,7 @@ export const NavigationLinks = [
   { name: 'Home', href: '' },
   { name: 'About', href: 'about' },
   { name: 'Contact', href: 'contact' },
-  { name: 'Blog', href: 'blog' },
+  { name: 'Blog', href: 'blog' }
   // { name: 'Docs', href: 'doc/introduction' }
 ]
 
