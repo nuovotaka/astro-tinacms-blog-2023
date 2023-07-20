@@ -61,7 +61,16 @@ if (frontmatter.author) {
       <span class="mr-6 flex items-center">
         <Icon class="mr-1 h-6 w-6 text-orange-200" pack="heroicons-outline" name="calendar" />
         <span class="ml-1 font-semibold text-orange-200">
-          {new Date(frontmatter.publishDate).toString()}
+          {
+            new Date(frontmatter.publishDate)
+              .toLocaleDateString('ja-JP', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit'
+              })
+              .split('/')
+              .join('-')
+          }
         </span>
       </span>
       {

@@ -69,7 +69,16 @@ const otherPosts = posts.slice(1, 5)
             </h1>
           </a>
           <p class="mb-4 text-gray-600 dark:text-gray-400">
-            {newestPost.data.publishDate?.toDateString()}
+            {
+              newestPost.data.publishDate
+                ?.toLocaleDateString('ja-JP', {
+                  year: 'numeric',
+                  month: '2-digit',
+                  day: '2-digit'
+                })
+                .split('/')
+                .join('-')
+            }
           </p>
           <p class="mb-4 text-gray-600 dark:text-gray-400">
             {newestPost.data.description}
@@ -110,7 +119,14 @@ const otherPosts = posts.slice(1, 5)
                     </div>
                   </a>
                   <p class="block text-sm text-gray-600 dark:text-gray-300">
-                    {post.data.publishDate?.toDateString()}
+                    {post.data.publishDate
+                      ?.toLocaleDateString('ja-JP', {
+                        year: 'numeric',
+                        month: '2-digit',
+                        day: '2-digit'
+                      })
+                      .split('/')
+                      .join('-')}
                   </p>
                   <p class="block text-sm text-gray-600 dark:text-gray-300 md:hidden">
                     {post.data.description}
