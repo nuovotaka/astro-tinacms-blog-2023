@@ -65,3 +65,12 @@ const { frontmatter } = Astro.props
       }
   </body>
 </html>
+
+<style is:global>
+  .contains-task-list li {
+    list-style-type: none;
+  }
+  .contains-task-list li :checked {
+    color: #666;
+  }
+</style>
