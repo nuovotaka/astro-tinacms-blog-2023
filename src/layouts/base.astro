@@ -74,7 +74,12 @@ const { frontmatter } = Astro.props
     color: #666;
   }
 
-  .contains-task-list .task-list-item:has(:checked) {
+  p:has(:checked) {
+    color: #666;
+    text-decoration-line: line-through;
+  }
+
+  .task-list-item li:has(:checked) {
     color: #666;
     text-decoration-line: line-through;
   }
