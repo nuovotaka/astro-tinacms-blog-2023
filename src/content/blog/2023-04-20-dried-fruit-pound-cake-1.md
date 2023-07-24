@@ -16,7 +16,7 @@ tags:
 
 ## ドライフルーツ・パウンドケーキ
 
-![ドライフルーツ・パウンドケーキ](/images/dried-fruit-pound-cake-1.jpeg>)
+![ドライフルーツ・パウンドケーキ](/images/dried-fruit-pound-cake-1.jpeg)
 
 材料
 
