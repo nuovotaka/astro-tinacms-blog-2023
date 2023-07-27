@@ -61,3 +61,6 @@ export const SIDEBAR: Sidebar = {
   ],
   'Another Section': [{ text: 'Page 4', link: 'doc/page-4' }]
 }
+
+export const PUBLIC_GA_TRACKING_ID = import.meta.env.PUBLIC_GA_TRACKING_ID
+export const PUBLIC_ADS_ID = import.meta.env.PUBLIC_ADS_ID

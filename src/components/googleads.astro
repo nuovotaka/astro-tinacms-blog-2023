@@ -1,0 +1,20 @@
+---
+export interface Props {
+  adsId: string
+}
+
+const { adsId = '' } = Astro.props
+---
+
+{
+  adsId && (
+    <>
+      <script
+        is:inline
+        data-ad-client={adsId}
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+      />
+    </>
+  )
+}
