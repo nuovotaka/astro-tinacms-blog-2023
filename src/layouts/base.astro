@@ -52,10 +52,10 @@ const { frontmatter } = Astro.props
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css" integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous">
     }
     <slot name="in-head" />
-    </head>
-    <body class="dark:bg-gray-900">
-      <Googleanalytics trackingId={PUBLIC_GA_TRACKING_ID} />
-      <GoogleADS adsId={PUBLIC_ADS_ID} />
+    <Googleanalytics trackingId={PUBLIC_GA_TRACKING_ID} />
+    <GoogleADS adsId={PUBLIC_ADS_ID} />
+  </head>
+  <body class="dark:bg-gray-900">
       {frontmatter.extra?.includes('mermaid') &&
         <script type="module">
           import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.esm.min.mjs';
