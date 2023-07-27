@@ -1,9 +1,14 @@
 ---
+import { PUBLIC_GA_TRACKING_ID,
+  PUBLIC_ADS_ID,
+} from '../config'
 import type { Frontmatter } from '../config'
 import SEO from '../components/seo.astro'
 import Header from '../components/header.astro'
 import Footer from '../components/footer.astro'
 import Gallery from '../components/gallery.astro'
+import Googleanalytics from '../components/googleanalytics.astro'
+import GoogleADS from '../components/googleads.astro'
 
 export interface Props {
   frontmatter: Frontmatter
@@ -49,6 +54,8 @@ const { frontmatter } = Astro.props
     <slot name="in-head" />
     </head>
     <body class="dark:bg-gray-900">
+      <Googleanalytics trackingId={PUBLIC_GA_TRACKING_ID} />
+      <GoogleADS adsId={PUBLIC_ADS_ID} />
       {frontmatter.extra?.includes('mermaid') &&
         <script type="module">
           import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.esm.min.mjs';
