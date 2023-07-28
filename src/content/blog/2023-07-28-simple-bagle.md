@@ -16,8 +16,8 @@ tags:
 
 ## ベーグル（備忘録）
 
-![ベーグル成形発酵](bagle1-1.jpeg)
-![ベーグル焼成](bagle1-2.jpeg)
+![ベーグル成形発酵](/images/bagle1-1.jpeg)
+![ベーグル焼成](/images/bagle1-2.jpeg)
 
 ### ベーグル　６つ分の材料
 
