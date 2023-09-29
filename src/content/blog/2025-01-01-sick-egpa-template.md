@@ -1,7 +1,7 @@
 ---
 draft: true
-publishDate: 2024-01-01T09:00:00+09:00
-title: '2024/01/01 膠原病・リウマチ科 受診 template'
+publishDate: 2025-01-01T09:00:00+09:00
+title: '2025/01/01 膠原病・リウマチ科 受診 template'
 description: 'egpa template'
 coverSVG: ../../assets/svg/undraw/undraw_doctors.svg
 socialImage: ../../assets/undraw/undraw_doctors.png
@@ -13,7 +13,7 @@ tags:
   - sick
 ---
 
-## 2024/01/01 膠原病・リウマチ科 受診
+## 2025/01/01 膠原病・リウマチ科 受診
 
 - [ ] 診察
 
