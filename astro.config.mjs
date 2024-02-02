@@ -24,9 +24,6 @@ export default defineConfig({
   site: 'https://blog.nuovotaka.com/',
   base: '/',
   integrations: [tailwind(), sitemap(), mdx(), alpinejs(), robotsTxt(), markdoc()],
-  experimental: {
-    assets: true
-  },
   markdown: {
     extendDefaultPlugins: true,
     remarkPlugins: [remarkReadingTime, remarkMath, remarkPlantUML, remarkDiagram, remarkEmoji],
@@ -36,6 +33,7 @@ export default defineConfig({
       langs: [],
       // Enable word wrap to prevent horizontal scrolling
       wrap: true
-    }
-  }
+    },
+  },
+  scopedStyleStrategy: "where",
 });
