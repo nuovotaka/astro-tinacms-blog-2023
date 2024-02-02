@@ -74,17 +74,18 @@ const { frontmatter } = Astro.props
     }
     {
       frontmatter.extra?.includes('mermaid') && (
-        <script type='module'>
-          import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+        <script is:inline type='module'>
+          import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
         </script>
       )
     }
-  </body><style is:global>
-    .contains-task-list li {
-      list-style-type: none;
-    }
-    .contains-task-list .task-list-item :checked {
-      color: #666;
-    }
-  </style>
+    <style is:global>
+      .contains-task-list li {
+        list-style-type: none;
+      }
+      .contains-task-list .task-list-item :checked {
+        color: #666;
+      }
+    </style>
+  </body>
 </html>
