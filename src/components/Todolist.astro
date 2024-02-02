@@ -5,14 +5,14 @@ const { type } = Astro.props
 {
   type === 'checked' ? (
     <>
-      <input type="checkbox" readonly="readonly" disabled checked="checked" />
+      <input type='checkbox' readonly='readonly' disabled checked='checked' />
       <s>
         <slot />
       </s>
     </>
   ) : (
     <>
-      <input type="checkbox" readonly="readonly" disabled />
+      <input type='checkbox' readonly='readonly' disabled />
       <slot />
     </>
   )

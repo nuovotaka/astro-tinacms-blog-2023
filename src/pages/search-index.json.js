@@ -44,9 +44,11 @@ const idx = lunr(function () {
   }, this)
 })
 
-export async function get() {
-  const body = JSON.stringify(idx)
-  return {
-    body
-  }
+export async function GET() {
+  return new Response(JSON.stringify(idx), {
+    status: 200,
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
 }
