@@ -1,11 +1,10 @@
 ---
 import type { CollectionEntry } from 'astro:content'
 import { getEntry } from 'astro:content'
-import Img from './img.astro'
 import { Icon } from 'astro-icon'
 import Categories from '../components/categories.astro'
 import Tags from '../components/tags.astro'
-import Image from 'astro/components/Image.astro'
+import { Image } from 'astro:assets'
 
 export interface Props {
   post: CollectionEntry<'blog'>

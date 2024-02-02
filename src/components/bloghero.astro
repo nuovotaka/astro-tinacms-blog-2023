@@ -1,11 +1,10 @@
 ---
 import { getEntry } from 'astro:content'
-import Img from './img.astro'
 import { Icon } from 'astro-icon'
 import { Frontmatter } from '../config'
 import Categories from '../components/categories.astro'
 import Tags from '../components/tags.astro'
-import Image from 'astro/components/Image.astro'
+import { Image } from 'astro:assets'
 
 export interface Props {
   frontmatter: Frontmatter
