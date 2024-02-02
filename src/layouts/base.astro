@@ -1,7 +1,5 @@
 ---
-import { PUBLIC_GA_TRACKING_ID,
-  PUBLIC_ADS_ID,
-} from '../config'
+import { PUBLIC_GA_TRACKING_ID, PUBLIC_ADS_ID } from '../config'
 import type { Frontmatter } from '../config'
 import SEO from '../components/seo.astro'
 import Header from '../components/header.astro'
@@ -33,8 +31,7 @@ const { frontmatter } = Astro.props
     <script is:inline>
       if (
         localStorage.theme === 'dark' ||
-        (!('theme' in localStorage) &&
-          window.matchMedia('(prefers-color-scheme: dark)').matches)
+        (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
       ) {
         document.documentElement.classList.add('dark')
       } else {
@@ -42,43 +39,52 @@ const { frontmatter } = Astro.props
       }
     </script>
     <style is:inline>
-      [x-cloak] { display: none !important; }
+      [x-cloak] {
+        display: none !important;
+      }
       .markmap > svg {
         width: 100%;
         height: 400px;
       }
-      </style>
-    {frontmatter.extra?.includes('math') &&
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css" integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous">
+    </style>
+    {
+      frontmatter.extra?.includes('math') && (
+        <link
+          rel='stylesheet'
+          href='https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css'
+          integrity='sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI'
+          crossorigin='anonymous'
+        />
+      )
     }
-    <slot name="in-head" />
-      {frontmatter.extra?.includes('mermaid') &&
-        <script type="module">
-          import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
-          mermaid.initialize({startOnLoad: true});
-        </script>
-      }
+    <slot name='in-head' />
     <Googleanalytics trackingId={PUBLIC_GA_TRACKING_ID} />
     <GoogleADS adsId={PUBLIC_ADS_ID} />
   </head>
-  <body class="dark:bg-gray-900">
-      <Header />
-      <slot />
-      {frontmatter.gallery && <Gallery folder={frontmatter.gallery} />}
-      <slot name="before-footer" />
-      <Footer />
-      {frontmatter.extra?.includes('markmap') &&
-        <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
-      }
-  </body>
+  <body class='dark:bg-gray-900'>
+    <Header />
+    <slot />
+    {frontmatter.gallery && <Gallery folder={frontmatter.gallery} />}
+    <slot name='before-footer' />
+    <Footer />
+    {
+      frontmatter.extra?.includes('markmap') && (
+        <script src='https://cdn.jsdelivr.net/npm/markmap-autoloader' />
+      )
+    }
+    {
+      frontmatter.extra?.includes('mermaid') && (
+        <script type='module'>
+          import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+        </script>
+      )
+    }
+  </body><style is:global>
+    .contains-task-list li {
+      list-style-type: none;
+    }
+    .contains-task-list .task-list-item :checked {
+      color: #666;
+    }
+  </style>
 </html>
-
-<style is:global>
-  .contains-task-list li {
-    list-style-type: none;
-  }
-  .contains-task-list .task-list-item :checked {
-    color: #666;
-  }
-
-</style>
