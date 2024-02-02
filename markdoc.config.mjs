@@ -1,24 +1,21 @@
-import { defineMarkdocConfig } from '@astrojs/markdoc/config';
-import Gallery from './src/components/gallery.astro';
-import YouTubeEmbed from './src/components/YouTubeEmbed.astro';
-import Todo_list from './src/components/Todolist.astro';
+import { defineMarkdocConfig, component } from '@astrojs/markdoc/config';
 
 export default defineMarkdocConfig({
   tags: {
     Gallery: {
-      render: Gallery,
+      render: component('./src/components/gallery.astro'),
       attributes: {
         folder: { type: String },
       }
     },
     todo: {
-      render: Todo_list,
+      render: component('./src/components/Todolist.astro'),
       attributes: {
         type: { type: String },
       },
     },
     Youtube: {
-      render: YouTubeEmbed,
+      render: component('./src/components/YouTubeEmbed.astro'),
       attributes: {
         id: { type: String },
       },
