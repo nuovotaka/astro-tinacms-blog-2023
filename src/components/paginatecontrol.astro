@@ -34,7 +34,7 @@ const { page } = Astro.props
 <div class='mt-1 flex items-center'>
   <p>
     <!-- {(<Paging page={page} name={Astro.url.pathname.replace(/\/\d*$/, '')} />)} -->
-    {(<Paging page={page} name={Astro.url.pathname.replace(/\/\d*$/, '')} />)}
+    {(<Paging page={page} />)}
   </p>
   <!-- {
       page.size < page.total && (
