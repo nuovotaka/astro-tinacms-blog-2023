@@ -4,12 +4,11 @@ import type { Page } from 'astro'
 import Paging from './paging.astro'
 
 export interface Props {
-  base: string
   page: Page<CollectionEntry<'blog'>>
 }
 
 // const { id } = Astro.params
-const { base, page } = Astro.props
+const { page } = Astro.props
 ---
 
 <div class='mt-4 flex items-center'>
@@ -34,6 +33,7 @@ const { base, page } = Astro.props
 </div>
 <div class='mt-1 flex items-center'>
   <p>
+    <!-- {(<Paging page={page} name={Astro.url.pathname.replace(/\/\d*$/, '')} />)} -->
     {(<Paging page={page} name={Astro.url.pathname.replace(/\/\d*$/, '')} />)}
   </p>
   <!-- {
