@@ -35,11 +35,11 @@ let host_url: any = Astro.url.host
               </li>
             ) : pageInfo.page == 1 ? (
               <li class='relative inline-flex items-center rounded-md border border-orange-300 bg-white px-2 py-2 text-center text-sm font-medium text-gray-500 hover:bg-orange-100 dark:border-orange-700 dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-orange-900'>
-                <a href={import.meta.env.BASE_URL + name}>{pageInfo.page}</a>
+                <a href={import.meta.env.SITE + name}>{pageInfo.page}</a>
               </li>
             ) : (
               <li class='relative inline-flex items-center rounded-md border border-orange-300 bg-white px-2 py-2 text-center text-sm font-medium text-gray-500 hover:bg-orange-100 dark:border-orange-700 dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-orange-900'>
-                <a href={import.meta.env.BASE_URL + name + '/' + pageInfo.page}>{pageInfo.page}</a>
+                <a href={import.meta.env.SITE + name + '/' + pageInfo.page}>{pageInfo.page}</a>
               </li>
             )}
           </div>
@@ -57,13 +57,13 @@ let host_url: any = Astro.url.host
         <div class='order-first inline-flex'>
           <a
             class='relative inline-flex items-center rounded-l-md border px-2 py-2 text-sm font-medium '
-            href={import.meta.env.BASE_URL + name}
+            href={import.meta.env.SITE + name}
           >
             <Icon class='h-5 w-5 text-white' pack='heroicons-solid' name='chevron-double-left' />
           </a>
           <a
             class='relative inline-flex items-center rounded-l-md border px-2 py-2 text-sm font-medium'
-            href={page.url.prev ? import.meta.env.BASE_URL + '/' + page.url.prev.slice(1) : '#'}
+            href={page.url.prev ? import.meta.env.SITE + '/' + page.url.prev.slice(1) : '#'}
           >
             <Icon class='h-5 w-5 text-white' pack='heroicons-solid' name='chevron-left' />
           </a>
@@ -76,13 +76,13 @@ let host_url: any = Astro.url.host
       page.currentPage != page.lastPage ? (
         <div class='order-last inline-flex'>
           <a
-            href={page.url.next ? import.meta.env.BASE_URL + '/' + page.url.next.slice(1) : '#'}
+            href={page.url.next ? import.meta.env.SITE + '/' + page.url.next.slice(1) : '#'}
             class='relative inline-flex items-center rounded-r-md border px-2 py-2 text-sm font-medium'
           >
             <Icon class='h-5 w-5 text-white' pack='heroicons-solid' name='chevron-right' />
           </a>
           <a
-            href={import.meta.env.BASE_URL + name + '/' + page.lastPage}
+            href={import.meta.env.SITE + name + '/' + page.lastPage}
             class='relative inline-flex items-center rounded-r-md border px-2 py-2 text-sm font-medium'
           >
             <Icon class='h-5 w-5 text-white' pack='heroicons-solid' name='chevron-double-right' />
