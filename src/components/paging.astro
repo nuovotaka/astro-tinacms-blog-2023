@@ -1,9 +1,10 @@
 ---
 import { Icon } from 'astro-icon'
 export interface Props {
+  name: string
   page: any
 }
-const { page } = Astro.props
+const { name, page } = Astro.props
 const pageMaxCount = 3 //最大表示数(前後3つ)
 const pageFirst = page.currentPage - pageMaxCount >= 1 ? page.currentPage - pageMaxCount : 1
 const pageEnd =
@@ -17,8 +18,8 @@ for (let i = pageFirst; i <= pageEnd; i++) {
   }
 }
 let host_url: any = Astro.url.host
-let e: any = Astro.url.pathname.replace(/^\//, '')
-let path_url: any = e.replace(/\/\d*$/, '')
+let e: any = name.replace(/^\//, '').replace(/\/\d*$/, '')
+let path_url: any = e
 ---
 
 <div class='ml-4'>
