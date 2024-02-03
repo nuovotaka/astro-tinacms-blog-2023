@@ -17,8 +17,8 @@ for (let i = pageFirst; i <= pageEnd; i++) {
   }
 }
 let host_url: any = Astro.url.host
-let path_url: any = Astro.url.pathname
-console.log(host_url, path_url)
+let path_url: any = Astro.url.pathname.replace(/^\//, '').replace(/\/\d*$/, '')
+console.log(Astro.url)
 ---
 
 <div class='ml-4'>
@@ -36,11 +36,11 @@ console.log(host_url, path_url)
               </li>
             ) : pageInfo.page == 1 ? (
               <li class='relative inline-flex items-center rounded-md border border-orange-300 bg-white px-2 py-2 text-center text-sm font-medium text-gray-500 hover:bg-orange-100 dark:border-orange-700 dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-orange-900'>
-                <a href={host_url + path_url}>{pageInfo.page}</a>
+                <a href={'//' + host_url + '/' + path_url}>{pageInfo.page}</a>
               </li>
             ) : (
               <li class='relative inline-flex items-center rounded-md border border-orange-300 bg-white px-2 py-2 text-center text-sm font-medium text-gray-500 hover:bg-orange-100 dark:border-orange-700 dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-orange-900'>
-                <a href={host_url + path_url + '/' + pageInfo.page}>{pageInfo.page}</a>
+                <a href={'//' + host_url + '/' + path_url + '/' + pageInfo.page}>{pageInfo.page}</a>
               </li>
             )}
           </div>
@@ -58,13 +58,13 @@ console.log(host_url, path_url)
         <div class='order-first inline-flex'>
           <a
             class='relative inline-flex items-center rounded-l-md border px-2 py-2 text-sm font-medium '
-            href={host_url + path_url}
+            href={'//' + host_url + '/' + path_url + '/'}
           >
             <Icon class='h-5 w-5 text-white' pack='heroicons-solid' name='chevron-double-left' />
           </a>
           <a
             class='relative inline-flex items-center rounded-l-md border px-2 py-2 text-sm font-medium'
-            href={page.url.prev ? host_url + '/' + page.url.prev.slice(1) : '#'}
+            href={page.url.prev ? '//' + host_url + '/' + page.url.prev.slice(1) : '#'}
           >
             <Icon class='h-5 w-5 text-white' pack='heroicons-solid' name='chevron-left' />
           </a>
@@ -77,13 +77,13 @@ console.log(host_url, path_url)
       page.currentPage != page.lastPage ? (
         <div class='order-last inline-flex'>
           <a
-            href={page.url.next ? host_url + '/' + page.url.next.slice(1) : '#'}
+            href={page.url.next ? '//' + host_url + '/' + page.url.next.slice(1) : '#'}
             class='relative inline-flex items-center rounded-r-md border px-2 py-2 text-sm font-medium'
           >
             <Icon class='h-5 w-5 text-white' pack='heroicons-solid' name='chevron-right' />
           </a>
           <a
-            href={host_url + path_url + '/' + page.lastPage}
+            href={'//' + host_url + '/' + path_url + '/' + page.lastPage}
             class='relative inline-flex items-center rounded-r-md border px-2 py-2 text-sm font-medium'
           >
             <Icon class='h-5 w-5 text-white' pack='heroicons-solid' name='chevron-double-right' />
