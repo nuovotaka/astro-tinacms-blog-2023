@@ -17,7 +17,8 @@ for (let i = pageFirst; i <= pageEnd; i++) {
   }
 }
 let host_url: any = Astro.url.host
-let path_url: any = Astro.url.pathname.replace(/^\//, '').replace(/\/\d*$/, '')
+let e: any = Astro.url.pathname.replace(/^\//, '')
+let path_url: any = e.replace(/\/\d*$/, '')
 ---
 
 <div class='ml-4'>
