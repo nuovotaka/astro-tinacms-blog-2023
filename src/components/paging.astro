@@ -18,7 +18,7 @@ for (let i = pageFirst; i <= pageEnd; i++) {
   }
 }
 let host_url: any = Astro.url.host
-let e: any = name.replace(/^\//, '').replace(/\/\d*$/, '')
+let e: any = page.url.current.replace(/^\//, '').replace(/\/\d*$/, '')
 let path_url: any = e
 ---
 
