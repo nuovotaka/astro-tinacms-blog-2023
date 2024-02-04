@@ -30,18 +30,28 @@ let path_url: any = e
     <ul class='flex flex-row'>
       {
         pageList.map((pageInfo) => (
-          <div class='inline-flex'>
+          <div class='relative inline-flex'>
             {pageInfo.current ? (
-              <li class='relative inline-flex items-center rounded-md border border-orange-500 bg-pink-100 px-2 py-2 text-center text-sm font-medium text-orange-600 shadow-sm dark:border-pink-500 dark:bg-pink-900 dark:text-orange-200'>
+              <li class='items-center rounded-md border border-orange-500 bg-pink-100 px-2 py-2 text-center text-sm font-medium text-orange-600 shadow-sm dark:border-pink-500 dark:bg-pink-900 dark:text-orange-200'>
                 {pageInfo.page}
               </li>
             ) : pageInfo.page == 1 ? (
-              <li class='relative inline-flex items-center rounded-md border border-orange-300 bg-white px-2 py-2 text-center text-sm font-medium text-gray-500 hover:bg-orange-100 dark:border-orange-700 dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-orange-900'>
-                <a href={'//' + host_url + '/' + path_url}>{pageInfo.page}</a>
+              <li class='items-center rounded-md border border-orange-300 bg-white text-gray-500 hover:bg-orange-100 dark:border-orange-700 dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-orange-900'>
+                <a
+                  class='block px-2 py-2 text-center text-sm font-medium'
+                  href={'//' + host_url + '/' + path_url}
+                >
+                  {pageInfo.page}
+                </a>
               </li>
             ) : (
-              <li class='relative inline-flex items-center rounded-md border border-orange-300 bg-white px-2 py-2 text-center text-sm font-medium text-gray-500 hover:bg-orange-100 dark:border-orange-700 dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-orange-900'>
-                <a href={'//' + host_url + '/' + path_url + '/' + pageInfo.page}>{pageInfo.page}</a>
+              <li class='items-center rounded-md border border-orange-300 bg-white text-gray-500 hover:bg-orange-100 dark:border-orange-700 dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-orange-900'>
+                <a
+                  class='block px-2 py-2 text-center text-sm font-medium'
+                  href={'//' + host_url + '/' + path_url + '/' + pageInfo.page}
+                >
+                  {pageInfo.page}
+                </a>
               </li>
             )}
           </div>
