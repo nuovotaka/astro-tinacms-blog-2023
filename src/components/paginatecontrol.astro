@@ -31,8 +31,7 @@ const { name, page } = Astro.props
   >
     Authors
   </a>
-  <!-- </div> -->
-  <!-- <div class='mt-1 inline-block md:flex md:items-center'> -->
+
   <p class='ml-4 sm:inline-block'>
     {page.size < page.total && <Paging page={page} name={Astro.url.pathname} />}
   </p>
