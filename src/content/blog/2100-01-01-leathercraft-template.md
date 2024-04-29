@@ -1,6 +1,6 @@
 ---
 draft: true
-publishDate: 2025-01-01T09:00:00+09:00
+publishDate: 2100-01-01T09:00:00+09:00
 title: 'Leather Craft template'
 description: 'leather craft template'
 author: nuovotaka
